@@ -10,13 +10,14 @@
 </head>
 <body>
 <div class="container">
+    <jsp:include page="common/menu.jsp"/>
     <div class="row" style="height: 30px"></div>
     <div class="row align-items-center">
         <div class="col"></div>
         <div class="col-6">
             <h2>Добавление нового издательства</h2>
             <%--@elvariable id="publishing" type="com.sberbank.library.domain.PublishingForm"--%>
-            <form:form method="post" action="/addPublishing" modelAttribute="publishing">
+            <form:form method="post" action="/add/publishing" modelAttribute="publishing">
                 <div class="form-group">
                     <form:label path="name">Название издательства</form:label>
                     <form:input path="name" class="form-control" placeholder="Имя"/>

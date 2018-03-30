@@ -10,13 +10,14 @@
 </head>
 <body>
 <div class="container">
+    <jsp:include page="common/menu.jsp"/>
     <div class="row" style="height: 30px"></div>
     <div class="row align-items-center">
         <div class="col"></div>
         <div class="col-6">
             <h2>Добавление новой книги</h2>
             <%--@elvariable id="book" type="AddBookForm"--%>
-            <form:form method="post" action="/addBook" modelAttribute="book">
+            <form:form method="post" action="/add/book" modelAttribute="book">
                 <div class="form-group">
                     <form:label path="title">Название книги</form:label>
                     <form:input path="title" class="form-control" placeholder="Название книги"/>

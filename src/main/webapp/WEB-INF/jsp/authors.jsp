@@ -15,29 +15,20 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-6">
-                <c:if test="${searchCondition != null}">
-                    <p>Поиск по условию: ${searchCondition}</p>
-                </c:if>
                 <%--@elvariable id="books" type="java.util.List"--%>
-                <c:forEach var="book" items="${books}">
+                <c:forEach var="author" items="${authors}">
                     <div>
-                        <h2>${book.getTitle()}</h2>
-                        <p>
-                            <a href="<c:url value="/author/${book.getAuthor().getId()}"/>">
-                                    ${book.getAuthor().getDisplayName()}
-                            </a>
-                        </p>
-                        <p>
-                            <a href="<c:url value="/publishing/${book.getPublishing().getId()}"/>">
-                                ${book.getPublishing().getName()}
-                            </a>
-                        </p>
+                        <h2>${author.getFirstName()}</h2>
+                        <p>${author.getLastName()}</p>
+                        <p>${author.getPatronymic()}</p>
                     </div>
                 </c:forEach>
 
             </div>
             <div class="col"></div>
         </div>
+
+
     </div>
 </div>
 <jsp:include page="common/footer.jsp"/>

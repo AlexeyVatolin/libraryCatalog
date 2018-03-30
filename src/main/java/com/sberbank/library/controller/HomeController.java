@@ -42,7 +42,7 @@ public class HomeController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/addBook", method = RequestMethod.GET)
+    @RequestMapping(value = "/add/book", method = RequestMethod.GET)
     public ModelAndView addBookView() {
         ModelAndView modelAndView = new ModelAndView(View.ADD_BOOK.getPath());
         modelAndView.addObject("authors", authorRepository.findAll());
@@ -51,7 +51,7 @@ public class HomeController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/addBook", method = RequestMethod.POST)
+    @RequestMapping(value = "/add/book", method = RequestMethod.POST)
     public ModelAndView addBook(@Valid @ModelAttribute("book") BookForm form, BindingResult result) {
         ModelAndView modelAndView = new ModelAndView(View.ADD_BOOK.getPath());
         if (result.hasErrors()) {
@@ -72,7 +72,7 @@ public class HomeController {
         return new ModelAndView("redirect:/");
     }
 
-    @RequestMapping(value = "/addAuthor", method = RequestMethod.GET)
+    @RequestMapping(value = "/add/author", method = RequestMethod.GET)
     public ModelAndView showAuthorFrom()
     {
         ModelAndView modelAndView = new ModelAndView(View.ADD_AUTHOR.getPath());
@@ -80,7 +80,7 @@ public class HomeController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/addAuthor", method = RequestMethod.POST)
+    @RequestMapping(value = "/add/author", method = RequestMethod.POST)
     public ModelAndView addAuthor(@Valid @ModelAttribute("author") AuthorForm form, BindingResult result)
     {
         if(result.hasErrors())
@@ -98,7 +98,7 @@ public class HomeController {
         return new ModelAndView("redirect:/");
     }
 
-    @RequestMapping(value = "/addPublishing", method = RequestMethod.GET)
+    @RequestMapping(value = "/add/publishing", method = RequestMethod.GET)
     public ModelAndView showPublishingFrom()
     {
         ModelAndView modelAndView = new ModelAndView(View.ADD_PUBLISHING.getPath());
@@ -106,7 +106,7 @@ public class HomeController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/addPublishing", method = RequestMethod.POST)
+    @RequestMapping(value = "/add/publishing", method = RequestMethod.POST)
     public ModelAndView addPublishing(@Valid @ModelAttribute("Publishing") PublishingForm form,
                                       BindingResult result)
     {
@@ -131,6 +131,34 @@ public class HomeController {
         List<Book> books = bookRepository.findByTitleContainsIgnoreCase(searchText);
         modelAndView.addObject("books", books);
         modelAndView.addObject("searchCondition", searchText);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/authors")
+    public ModelAndView authors() {
+        ModelAndView modelAndView = new ModelAndView(View.AUTHORS.getPath());
+        modelAndView.addObject("authors", authorRepository.findAll());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/author/{id}")
+    public ModelAndView authorPage(@PathVariable("id") Long id) {
+        ModelAndView modelAndView = new ModelAndView(View.HOME.getPath());
+        modelAndView.addObject("books", bookRepository.findByAuthor_Id(id));
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/publishings")
+    public ModelAndView publishings() {
+        ModelAndView modelAndView = new ModelAndView(View.PUBLISHINGS.getPath());
+        modelAndView.addObject("publishings", publishingRepository.findAll());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/publishing/{id}")
+    public ModelAndView publishingPage(@PathVariable("id") Long id) {
+        ModelAndView modelAndView = new ModelAndView(View.HOME.getPath());
+        modelAndView.addObject("books", bookRepository.findByPublishing_Id(id));
         return modelAndView;
     }
 }

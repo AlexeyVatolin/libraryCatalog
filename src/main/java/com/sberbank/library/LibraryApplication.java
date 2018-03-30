@@ -30,7 +30,7 @@ public class LibraryApplication {
 		SpringApplication.run(LibraryApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
     InitializingBean sendDatabase() {
 		return () -> {
             authorRepository.save(new Author("Денис", "Иванович", "Фонвизин"));
@@ -55,6 +55,6 @@ public class LibraryApplication {
             publishingRepository.save(publishing);
             bookRepository.save(new Book("Василь Быков. Собрание сочинений в 4 томах (комплект из 4 книг)", bykov, publishing, 1985, 1656));
 		};
-	}
+	}*/
 }
 

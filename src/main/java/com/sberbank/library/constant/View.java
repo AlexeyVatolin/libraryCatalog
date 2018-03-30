@@ -12,7 +12,10 @@ public enum View {
     HOME("index"),
     ADD_BOOK("addBook"),
     ADD_AUTHOR("addAuthor"),
-    ADD_PUBLISHING("addPublishing");
+    ADD_PUBLISHING("addPublishing"),
+
+    AUTHORS("authors"),
+    PUBLISHINGS("publishings");
 
     private final String path;
 
