@@ -18,7 +18,7 @@
             <div class="col-6">
                 <h2>Добавление нового издательства</h2>
                 <%--@elvariable id="publishing" type="com.sberbank.library.domain.PublishingForm"--%>
-                <form:form method="post" action="/add/publishing" modelAttribute="publishing">
+                <form:form method="post" action="/publishing/add" modelAttribute="publishing">
                     <div class="form-group">
                         <form:label path="name">Название издательства</form:label>
                         <form:input path="name" class="form-control" placeholder="Имя"/>

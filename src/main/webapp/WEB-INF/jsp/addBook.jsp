@@ -18,7 +18,7 @@
             <div class="col-6">
                 <h2>Добавление новой книги</h2>
                 <%--@elvariable id="book" type="AddBookForm"--%>
-                <form:form method="post" action="/add/book" modelAttribute="book">
+                <form:form method="post" action="/book/add" modelAttribute="book">
                     <div class="form-group">
                         <form:label path="title">Название книги</form:label>
                         <form:input path="title" class="form-control" placeholder="Название книги"/>
