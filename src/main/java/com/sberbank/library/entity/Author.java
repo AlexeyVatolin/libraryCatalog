@@ -26,6 +26,11 @@ public class Author {
         this.patronymic = patronymic;
     }
 
+    public Author(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public String getDisplayName()
     {
         String name = lastName + " " + firstName.charAt(0) + ". ";

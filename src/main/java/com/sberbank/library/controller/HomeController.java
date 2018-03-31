@@ -11,11 +11,11 @@ import com.sberbank.library.repository.AuthorRepository;
 import com.sberbank.library.repository.BookRepository;
 import com.sberbank.library.repository.PublishingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
@@ -24,144 +24,16 @@ import java.util.List;
 public class HomeController {
 
     private final BookRepository bookRepository;
-    private final AuthorRepository authorRepository;
-    private final PublishingRepository publishingRepository;
 
     @Autowired
-    public HomeController(BookRepository bookRepository, AuthorRepository authorRepository,
-                          PublishingRepository publishingRepository) {
+    public HomeController(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
-        this.authorRepository = authorRepository;
-        this.publishingRepository = publishingRepository;
     }
 
     @RequestMapping("/")
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView(View.HOME.getPath());
         modelAndView.addObject("books", bookRepository.findAll());
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/add/book", method = RequestMethod.GET)
-    public ModelAndView addBookView() {
-        ModelAndView modelAndView = new ModelAndView(View.ADD_BOOK.getPath());
-        modelAndView.addObject("authors", authorRepository.findAll());
-        modelAndView.addObject("publishings", publishingRepository.findAll());
-        modelAndView.addObject("book", new BookForm());
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/add/book", method = RequestMethod.POST)
-    public ModelAndView addBook(@Valid @ModelAttribute("book") BookForm form, BindingResult result) {
-        ModelAndView modelAndView = new ModelAndView(View.ADD_BOOK.getPath());
-        if (result.hasErrors()) {
-            modelAndView.addObject("result", result);
-            modelAndView.addObject("authors", authorRepository.findAll());
-            modelAndView.addObject("publishings", publishingRepository.findAll());
-            return modelAndView;
-        }
-
-        Book book = new Book();
-        book.setAuthor(form.getAuthor());
-        book.setPublishing(form.getPublishing());
-        book.setTitle(form.getTitle());
-        book.setNumberOfPage(form.getNumberOfPage());
-        book.setPubYear(form.getPubYear());
-        book.setNumberOfBooks(form.getNumberOfBooks());
-        book.setNumberOfBooksAvailable(form.getNumberOfBooks());
-        book.setBookLocation(form.getBookLocation());
-        bookRepository.saveAndFlush(book);
-
-        return new ModelAndView("redirect:/");
-    }
-
-    @RequestMapping(value = "/add/author", method = RequestMethod.GET)
-    public ModelAndView showAuthorFrom()
-    {
-        ModelAndView modelAndView = new ModelAndView(View.ADD_AUTHOR.getPath());
-        modelAndView.addObject("author", new AuthorForm());
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/add/author", method = RequestMethod.POST)
-    public ModelAndView addAuthor(@Valid @ModelAttribute("author") AuthorForm form, BindingResult result)
-    {
-        if(result.hasErrors())
-        {
-            ModelAndView modelAndView = new ModelAndView(View.ADD_AUTHOR.getPath());
-            modelAndView.addObject("result", result);
-            return modelAndView;
-        }
-        Author author = new Author();
-        author.setFirstName(form.getFirstName());
-        author.setLastName(form.getLastName());
-        author.setPatronymic(form.getPatronymic());
-        authorRepository.saveAndFlush(author);
-
-        return new ModelAndView("redirect:/add/book");
-    }
-
-    @RequestMapping(value = "/add/publishing", method = RequestMethod.GET)
-    public ModelAndView showPublishingFrom()
-    {
-        ModelAndView modelAndView = new ModelAndView(View.ADD_PUBLISHING.getPath());
-        modelAndView.addObject("publishing", new PublishingForm());
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/add/publishing", method = RequestMethod.POST)
-    public ModelAndView addPublishing(@Valid @ModelAttribute("Publishing") PublishingForm form,
-                                      BindingResult result)
-    {
-        if(result.hasErrors())
-        {
-            ModelAndView modelAndView = new ModelAndView(View.ADD_PUBLISHING.getPath());
-            modelAndView.addObject("result", result);
-            return modelAndView;
-        }
-        Publishing publishing = new Publishing();
-        publishing.setName(form.getName());
-        publishingRepository.saveAndFlush(publishing);
-
-        return new ModelAndView("redirect:/add/book");
-    }
-
-
-    @RequestMapping(value = "/searchBook", method = RequestMethod.POST)
-    public ModelAndView bookSearch(@RequestParam(value = "searchText", required = false) String searchText,
-                                   HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView(View.HOME.getPath());
-        List<Book> books = bookRepository.findByTitleContainsIgnoreCase(searchText);
-        modelAndView.addObject("books", books);
-        modelAndView.addObject("searchCondition", searchText);
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/authors")
-    public ModelAndView authors() {
-        ModelAndView modelAndView = new ModelAndView(View.AUTHORS.getPath());
-        modelAndView.addObject("authors", authorRepository.findAll());
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/author/{id}")
-    public ModelAndView authorPage(@PathVariable("id") Long id) {
-        ModelAndView modelAndView = new ModelAndView(View.HOME.getPath());
-        modelAndView.addObject("books", bookRepository.findByAuthor_Id(id));
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/publishings")
-    public ModelAndView publishings() {
-        ModelAndView modelAndView = new ModelAndView(View.PUBLISHINGS.getPath());
-        modelAndView.addObject("publishings", publishingRepository.findAll());
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/publishing/{id}")
-    public ModelAndView publishingPage(@PathVariable("id") Long id) {
-        ModelAndView modelAndView = new ModelAndView(View.HOME.getPath());
-        modelAndView.addObject("books", bookRepository.findByPublishing_Id(id));
         return modelAndView;
     }
 }

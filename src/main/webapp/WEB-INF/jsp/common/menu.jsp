@@ -12,7 +12,7 @@
                 <a class="nav-link" href="<c:url value='/'/>">Главная</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value='/add/book'/>">Добавить книгу</a>
+                <a class="nav-link" href="<c:url value='/book/add'/>">Добавить книгу</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value='/authors'/>">Авторы</a>
@@ -20,11 +20,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value='/publishings'/>">Издательства</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<c:url value='/authors'/>">Авторы</a>
-            </li>
         </ul>
-        <form method="POST" action="/searchBook" class="form-inline my-2 my-lg-0">
+        <form method="POST" action="/book/search" class="form-inline my-2 my-lg-0">
             <input name="searchText" class="form-control mr-sm-2" type="search" placeholder="Поиск по книгам" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
         </form>

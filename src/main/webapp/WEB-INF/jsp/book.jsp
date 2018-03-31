@@ -21,7 +21,7 @@
                         книгу</a>
                 </c:if>
                 <c:if test="${book.getNumberOfBooksAvailable() < book.getNumberOfBooks()}">
-                    <a class="btn btn-primary" href="<c:url value='/book/${book.getId()}/take'/>" role="button">Принять
+                    <a class="btn btn-primary" href="<c:url value='/book/${book.getId()}/take'/>" role="button">Возвратить
                         книгу</a>
                 </c:if>
             </div>

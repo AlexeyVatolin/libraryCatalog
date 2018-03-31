@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String title;
@@ -26,12 +26,16 @@ public class Book {
     private int numberOfBooksAvailable;
     private String bookLocation;
 
-    public Book(String title, Author author, Publishing publishing, int pubYear, int numberOfPage) {
+    public Book(String title, Author author, Publishing publishing, int pubYear, int numberOfPage, int numberOfBooks,
+                int numberOfBooksAvailable, String bookLocation) {
         this.title = title;
         this.author = author;
         this.publishing = publishing;
         this.pubYear = pubYear;
         this.numberOfPage = numberOfPage;
+        this.numberOfBooks = numberOfBooks;
+        this.numberOfBooksAvailable = numberOfBooksAvailable;
+        this.bookLocation = bookLocation;
     }
 
     public void giveBook() {
