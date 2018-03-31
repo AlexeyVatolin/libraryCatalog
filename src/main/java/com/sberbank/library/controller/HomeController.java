@@ -95,7 +95,7 @@ public class HomeController {
         author.setPatronymic(form.getPatronymic());
         authorRepository.saveAndFlush(author);
 
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/add/book");
     }
 
     @RequestMapping(value = "/add/publishing", method = RequestMethod.GET)
@@ -120,7 +120,7 @@ public class HomeController {
         publishing.setName(form.getName());
         publishingRepository.saveAndFlush(publishing);
 
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/add/book");
     }
 
 

@@ -27,18 +27,28 @@
 
                 <div class="form-group">
                     <form:label path="author">Автор</form:label>
-                    <form:select path="author" class="form-control">
-                        <%--@elvariable id="authors" type="java.util.List"--%>
-                        <form:options items="${authors}" itemLabel="displayName"/>
-                    </form:select>
+                    <div class="input-group mb-3">
+                        <form:select path="author" class="form-control">
+                            <%--@elvariable id="authors" type="java.util.List"--%>
+                            <form:options items="${authors}" itemLabel="displayName"/>
+                        </form:select>
+                        <div class="input-group-append">
+                            <a class="btn btn-outline-secondary" href="<c:url value="/add/author"/>">Добавить</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <form:label path="publishing">Издательство</form:label>
-                    <form:select path="publishing" class="form-control">
-                        <%--@elvariable id="publishings" type="java.util.List"--%>
-                        <form:options items="${publishings}" itemLabel="name" itemValue="id"/>
-                    </form:select>
+                    <div class="input-group mb-3">
+                        <form:select path="publishing" class="form-control">
+                            <%--@elvariable id="publishings" type="java.util.List"--%>
+                            <form:options items="${publishings}" itemLabel="name" itemValue="id"/>
+                        </form:select>
+                        <div class="input-group-append">
+                            <a class="btn btn-outline-secondary" href="<c:url value="/add/publishing"/>">Добавить</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">

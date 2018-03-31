@@ -15,13 +15,15 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-6">
+                <div class="list-group">
                 <%--@elvariable id="publishings" type="java.util.List"--%>
                 <c:forEach var="publishing" items="${publishings}">
-                    <div>
-                        <h2>${publishing.getName()}</h2>
-                    </div>
+                    <a href="<c:url value="/publishing/${publishing.getId()}"/>"
+                       class="list-group-item list-group-item-action flex-column align-items-start">
+                        <h5>${publishing.getName()}</h5>
+                    </a>
                 </c:forEach>
-
+                </div>
             </div>
             <div class="col"></div>
         </div>

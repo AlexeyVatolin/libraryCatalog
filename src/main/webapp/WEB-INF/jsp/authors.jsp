@@ -15,15 +15,17 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-6">
-                <%--@elvariable id="books" type="java.util.List"--%>
-                <c:forEach var="author" items="${authors}">
-                    <div>
-                        <h2>${author.getFirstName()}</h2>
-                        <p>${author.getLastName()}</p>
-                        <p>${author.getPatronymic()}</p>
-                    </div>
-                </c:forEach>
-
+                <div class="list-group">
+                    <%--@elvariable id="books" type="java.util.List"--%>
+                    <c:forEach var="author" items="${authors}">
+                        <a href="<c:url value="/author/${author.getId()}"/>"
+                           class="list-group-item list-group-item-action flex-column align-items-start">
+                            <p class="h5">${author.getLastName()}
+                                <small>${author.getFirstName()} ${author.getPatronymic()}</small>
+                            </p>
+                        </a>
+                    </c:forEach>
+                </div>
             </div>
             <div class="col"></div>
         </div>

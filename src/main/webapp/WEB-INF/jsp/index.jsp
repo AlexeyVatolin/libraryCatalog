@@ -19,22 +19,23 @@
                     <p>Поиск по условию: ${searchCondition}</p>
                 </c:if>
                 <%--@elvariable id="books" type="java.util.List"--%>
-                <c:forEach var="book" items="${books}">
-                    <div>
-                        <h2>${book.getTitle()}</h2>
-                        <p>
-                            <a href="<c:url value="/author/${book.getAuthor().getId()}"/>">
-                                    ${book.getAuthor().getDisplayName()}
-                            </a>
-                        </p>
-                        <p>
-                            <a href="<c:url value="/publishing/${book.getPublishing().getId()}"/>">
-                                ${book.getPublishing().getName()}
-                            </a>
-                        </p>
-                    </div>
-                </c:forEach>
-
+                <div class="list-group">
+                    <c:forEach var="book" items="${books}">
+                        <div class="list-group-item list-group-item-action flex-column align-items-start">
+                            <h5 class="mb-1">${book.getTitle()}</h5>
+                            <p class="mb-1">Автор:
+                                <a href="<c:url value="/author/${book.getAuthor().getId()}"/>">
+                                        ${book.getAuthor().getDisplayName()}
+                                </a>
+                            </p>
+                            <p class="mb-1">Издательство:
+                                <a href="<c:url value="/publishing/${book.getPublishing().getId()}"/>">
+                                        ${book.getPublishing().getName()}
+                                </a>
+                            </p>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
             <div class="col"></div>
         </div>
