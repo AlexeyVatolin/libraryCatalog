@@ -22,16 +22,21 @@
                 <div class="list-group">
                     <c:forEach var="book" items="${books}">
                         <div class="list-group-item list-group-item-action flex-column align-items-start">
-                            <h5 class="mb-1">${book.getTitle()}</h5>
+                            <a href="<c:url value='/book/${book.getId()}'/>">
+                                <h5 class="mb-1">${book.getTitle()}</h5>
+                            </a>
                             <p class="mb-1">Автор:
-                                <a href="<c:url value="/author/${book.getAuthor().getId()}"/>">
+                                <a href="<c:url value='/author/${book.getAuthor().getId()}'/>">
                                         ${book.getAuthor().getDisplayName()}
                                 </a>
                             </p>
                             <p class="mb-1">Издательство:
-                                <a href="<c:url value="/publishing/${book.getPublishing().getId()}"/>">
+                                <a href="<c:url value='/publishing/${book.getPublishing().getId()}'/>">
                                         ${book.getPublishing().getName()}
                                 </a>
+                            </p>
+                            <p class="mb-1">Количество (всего/в
+                                наличии): ${book.getNumberOfBooks()}/${book.getNumberOfBooksAvailable()}
                             </p>
                         </div>
                     </c:forEach>

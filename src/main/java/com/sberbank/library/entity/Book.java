@@ -22,6 +22,9 @@ public class Book {
     private Publishing publishing;
     private int pubYear;
     private int numberOfPage;
+    private int numberOfBooks;
+    private int numberOfBooksAvailable;
+    private String bookLocation;
 
     public Book(String title, Author author, Publishing publishing, int pubYear, int numberOfPage) {
         this.title = title;
@@ -29,5 +32,13 @@ public class Book {
         this.publishing = publishing;
         this.pubYear = pubYear;
         this.numberOfPage = numberOfPage;
+    }
+
+    public void giveBook() {
+        numberOfBooksAvailable--;
+    }
+
+    public void takeBook() {
+        numberOfBooksAvailable++;
     }
 }

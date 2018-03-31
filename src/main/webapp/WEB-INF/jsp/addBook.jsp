@@ -63,6 +63,18 @@
                     <form:errors path="numberOfPage" class="invalid-feedback" element="div" cssStyle="display: block"/>
                 </div>
 
+                <div class="form-group">
+                    <form:label path="numberOfBooks">Количество книг</form:label>
+                    <form:input path="numberOfBooks" type="number" class="form-control"/>
+                    <form:errors path="numberOfBooks" class="invalid-feedback" element="div" cssStyle="display: block"/>
+                </div>
+
+                <div class="form-group">
+                    <form:label path="bookLocation">Расположение книги</form:label>
+                    <form:input path="bookLocation" placeholder="Введите место расположения книги в произвольном формате" class="form-control"/>
+                    <form:errors path="bookLocation" class="invalid-feedback" element="div" cssStyle="display: block"/>
+                </div>
+
                 <input type="submit" value="Сохранить" class="btn btn-primary"/>
             </form:form>
         </div>

@@ -14,8 +14,10 @@ public enum View {
     ADD_AUTHOR("addAuthor"),
     ADD_PUBLISHING("addPublishing"),
 
+    BOOK("book"),
     AUTHORS("authors"),
     PUBLISHINGS("publishings");
+
 
     private final String path;
 

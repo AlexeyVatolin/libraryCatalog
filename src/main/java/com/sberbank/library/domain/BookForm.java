@@ -21,4 +21,8 @@ public class BookForm {
     private int pubYear;
     @Min(0)
     private int numberOfPage;
+    @Min(0)
+    private int numberOfBooks;
+    @Size(min = 1)
+    private String bookLocation;
 }

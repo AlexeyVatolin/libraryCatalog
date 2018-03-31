@@ -67,6 +67,9 @@ public class HomeController {
         book.setTitle(form.getTitle());
         book.setNumberOfPage(form.getNumberOfPage());
         book.setPubYear(form.getPubYear());
+        book.setNumberOfBooks(form.getNumberOfBooks());
+        book.setNumberOfBooksAvailable(form.getNumberOfBooks());
+        book.setBookLocation(form.getBookLocation());
         bookRepository.saveAndFlush(book);
 
         return new ModelAndView("redirect:/");
